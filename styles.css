@@ -1,0 +1,676 @@
+/* =========================================================
+   Kilómetro Cero — hoja de estilos
+   Layout de página con CSS Grid (header / main / footer)
+   Layout interno de componentes con Flexbox
+   ========================================================= */
+
+:root {
+  --crema: #F5EFE4;
+  --espresso: #2E2118;
+  --espresso-suave: #5A4B3C;
+  --verde-ruta: #4F6B3D;
+  --verde-ruta-oscuro: #3A4F2C;
+  --amarillo-gel: #E8A33D;
+  --tostado: #D9CBB4;
+  --blanco: #FFFDF9;
+
+  --fuente-titulo: 'Barlow Condensed', sans-serif;
+  --fuente-texto: 'Work Sans', sans-serif;
+
+  --ancho-contenido: 72rem;
+  --espacio: 1.5rem;
+}
+
+/* ---------- Reset básico ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  color: var(--espresso);
+  background-color: var(--crema);
+  line-height: 1.6;
+
+  /* --------- CSS Grid: estructura de página en 3 áreas --------- */
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  color: var(--espresso);
+  line-height: 1.1;
+}
+
+a {
+  color: var(--verde-ruta-oscuro);
+}
+
+a:hover {
+  color: var(--amarillo-gel);
+}
+
+:focus-visible {
+  outline: 3px solid var(--amarillo-gel);
+  outline-offset: 2px;
+}
+
+/* ---------- Animación 1: entrada fade-up al cargar la página ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Header: área de grid "header" + flex row interno ---------- */
+header {
+  grid-area: header;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio);
+  padding: 1.25rem 2rem;
+  background-color: var(--espresso);
+  color: var(--crema);
+
+  animation: fade-up 0.6s ease-out both;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  letter-spacing: 0.02em;
+  color: var(--crema);
+}
+
+/* Ícono de bicicleta: línea plana, dibujada con SVG (currentColor = hereda el color del texto) */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icono-bici {
+  width: 44px;
+  height: auto;
+  color: var(--amarillo-gel);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav a {
+  color: var(--crema);
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+header nav a:hover {
+  color: var(--amarillo-gel);
+  border-bottom-color: var(--amarillo-gel);
+}
+
+/* ---------- Main: área de grid "main" + columna flex interna ---------- */
+main {
+  grid-area: main;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: var(--ancho-contenido);
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+/* Cada sección entra con fade-up, escalonada para que se sienta como
+   una sola secuencia de carga, no efectos sueltos */
+main > section {
+  animation: fade-up 0.6s ease-out both;
+}
+
+main > section:nth-of-type(1) { animation-delay: 0.1s; }
+main > section:nth-of-type(2) { animation-delay: 0.2s; }
+main > section:nth-of-type(3) { animation-delay: 0.3s; }
+
+main section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+
+main section h2::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 4px;
+  background-color: var(--verde-ruta);
+  margin-top: 0.5rem;
+}
+
+#nosotros p {
+  max-width: 62ch;
+  color: var(--espresso-suave);
+}
+
+/* Texto + imagen en Nosotros: Flexbox, se apila en móvil */
+.nosotros-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nosotros-contenido p {
+  flex: 1 1 320px;
+}
+
+.nosotros-contenido img {
+  flex: 1 1 280px;
+  max-width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 2px solid var(--espresso);
+}
+
+/* Galería de fotos: CSS Grid (otra área con grid, además de header/main/footer) */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 2px solid var(--espresso);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 22px rgba(46, 33, 24, 0.18);
+}
+
+/* ---------- Galería del menú: flex-wrap para las tablas tipo "hoja de ruta" ---------- */
+#menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#menu > table {
+  display: flex; /* se sobreescribe abajo en el contenedor de tablas */
+}
+
+/* Contenedor visual de las tablas como tarjetas en flex-wrap */
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  align-items: flex-start;
+}
+
+#menu h2 {
+  flex: 1 1 100%;
+}
+
+#menu table {
+  flex: 1 1 320px;
+  border-collapse: collapse;
+  background-color: var(--blanco);
+  border: 2px solid var(--espresso);
+  border-radius: 4px;
+  overflow: hidden;
+
+  /* ---------- Animación 2: la tarjeta de menú reacciona al pasar el mouse ---------- */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+#menu table:hover,
+#menu table:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--verde-ruta);
+  box-shadow: 0 12px 22px rgba(46, 33, 24, 0.18);
+}
+
+#menu caption {
+  text-align: left;
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  background-color: var(--verde-ruta);
+  color: var(--crema);
+}
+
+#menu th,
+#menu td {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  border-top: 1px dashed var(--tostado);
+  font-size: 0.95rem;
+}
+
+#menu thead th {
+  border-top: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--espresso-suave);
+}
+
+#menu tbody th {
+  font-weight: 600;
+}
+
+#menu td:last-child,
+#menu th:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--verde-ruta-oscuro);
+  font-weight: 600;
+}
+
+/* ========================================================
+   Sección "Pide en línea": filtros, tarjetas y carrito
+   ======================================================== */
+
+/* ---------- Filtro de categorías ---------- */
+.filtro-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.filtro-btn {
+  font-family: var(--fuente-texto);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.1rem;
+  border: 2px solid var(--tostado);
+  border-radius: 999px;
+  background-color: var(--blanco);
+  color: var(--espresso-suave);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtro-btn:hover {
+  border-color: var(--verde-ruta);
+}
+
+/* La clase "activo" la agrega/quita script.js con classList */
+.filtro-btn.activo {
+  background-color: var(--verde-ruta);
+  border-color: var(--verde-ruta);
+  color: var(--crema);
+}
+
+/* ---------- Grid de tarjetas de producto (CSS Grid) ---------- */
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.tarjeta-producto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 1.25rem 1rem;
+  background-color: var(--blanco);
+  border: 2px solid var(--espresso);
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 18px rgba(46, 33, 24, 0.15);
+}
+
+.tarjeta-producto img {
+  width: 64px;
+  height: 64px;
+}
+
+.tarjeta-producto h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--espresso);
+}
+
+.tarjeta-producto .categoria-producto {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--espresso-suave);
+  margin: 0;
+}
+
+.tarjeta-producto .precio-producto {
+  font-weight: 600;
+  color: var(--verde-ruta-oscuro);
+  margin: 0;
+}
+
+.tarjeta-producto .btn-agregar {
+  font-family: var(--fuente-texto);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.55rem 1.4rem;
+  border: 2px solid var(--verde-ruta);
+  border-radius: 3px;
+  background-color: var(--verde-ruta);
+  color: var(--crema);
+  cursor: pointer;
+}
+
+.tarjeta-producto .btn-agregar:hover {
+  background-color: var(--verde-ruta-oscuro);
+  border-color: var(--verde-ruta-oscuro);
+}
+
+/* ---------- Carrito ---------- */
+.carrito {
+  border: 2px solid var(--espresso);
+  border-radius: 4px;
+  padding: 1.5rem;
+  max-width: 28rem;
+  background-color: var(--blanco);
+}
+
+.carrito h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  margin: 0 0 1rem;
+}
+
+.carrito-lista {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.carrito-lista li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--tostado);
+  font-size: 0.95rem;
+}
+
+.carrito-lista .btn-quitar {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--verde-ruta-oscuro);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.carrito-vacio-mensaje {
+  color: var(--espresso-suave);
+  font-size: 0.9rem;
+}
+
+.carrito-resumen {
+  margin: 1rem 0;
+}
+
+.carrito-resumen p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.3rem 0;
+}
+
+#boton-vaciar-carrito {
+  width: 100%;
+  font-family: var(--fuente-texto);
+  font-weight: 600;
+  padding: 0.6rem;
+  border: 2px solid var(--tostado);
+  border-radius: 3px;
+  background-color: transparent;
+  color: var(--espresso-suave);
+  cursor: pointer;
+}
+
+#boton-vaciar-carrito:hover {
+  border-color: var(--espresso);
+  color: var(--espresso);
+}
+
+/* ---------- Mensaje de confirmación del formulario ---------- */
+.mensaje-confirmacion {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  background-color: var(--verde-ruta);
+  color: var(--crema);
+  font-weight: 600;
+}
+
+.mensaje-confirmacion.error {
+  background-color: #8a3b2b;
+}
+
+/* Clase de utilidad: oculta cualquier elemento al que se la agreguen */
+.oculto {
+  display: none;
+}
+
+/* ---------- Formulario: flex-wrap para poner los fieldset lado a lado ---------- */
+#contacto form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+#contacto fieldset {
+  flex: 1 1 280px;
+  border: 2px solid var(--tostado);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+#contacto legend {
+  font-family: var(--fuente-titulo);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0 0.5rem;
+  color: var(--verde-ruta-oscuro);
+}
+
+/* Cada par label + input, en columna */
+#contacto fieldset > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+#contacto fieldset > div:last-child {
+  margin-bottom: 0;
+}
+
+#contacto label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+#contacto input,
+#contacto select,
+#contacto textarea {
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--tostado);
+  border-radius: 3px;
+  background-color: var(--blanco);
+  color: var(--espresso);
+}
+
+#contacto textarea {
+  resize: vertical;
+}
+
+/* Div del checkbox: ocupa todo el ancho, en fila */
+#contacto form > div {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+#contacto form > div:has(button) {
+  gap: 1rem;
+}
+
+#contacto button {
+  font-family: var(--fuente-texto);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 3px;
+  border: 2px solid var(--verde-ruta);
+  cursor: pointer;
+}
+
+/* ---------- Animación 3: enfocar al usuario en la acción principal (Enviar) ---------- */
+@keyframes pulso-atencion {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(79, 107, 61, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(79, 107, 61, 0);
+  }
+}
+
+#contacto button[type="submit"] {
+  background-color: var(--verde-ruta);
+  color: var(--crema);
+
+  /* Pulsa 3 veces, 1.2s después de que cargó la página, y luego se detiene
+     para llamar la atención sin volverse molesto */
+  animation: pulso-atencion 1.6s ease-out 1.2s 3;
+}
+
+#contacto button[type="submit"]:hover {
+  background-color: var(--verde-ruta-oscuro);
+  border-color: var(--verde-ruta-oscuro);
+}
+
+#contacto button[type="reset"] {
+  background-color: transparent;
+  color: var(--verde-ruta-oscuro);
+}
+
+#contacto button[type="reset"]:hover {
+  background-color: var(--tostado);
+}
+
+/* ---------- Footer: área de grid "footer" + flex row interno ---------- */
+footer {
+  grid-area: footer;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--espacio);
+  padding: 1.75rem 2rem;
+  background-color: var(--espresso);
+  color: var(--tostado);
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer address {
+  font-style: normal;
+  text-align: right;
+}
+
+footer a {
+  color: var(--amarillo-gel);
+}
+
+/* ---------- Responsive: apilar todo en columna en pantallas pequeñas ---------- */
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+
+  footer address {
+    text-align: left;
+  }
+
+  main section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ---------- Accesibilidad: respetar preferencia de movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
