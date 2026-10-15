@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kilómetro Cero | Cafetería</title>
+  <meta name="description" content="Kilómetro Cero: cafetería para ciclistas y deportistas, con menú de bebidas, panadería, postres y snacks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="marca">
+      <svg class="icono-bici" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="60" cy="80" r="36"/>
+        <circle cx="180" cy="80" r="36"/>
+        <polyline points="100,80 60,80"/>
+        <polyline points="100,80 120,30 60,80"/>
+        <polyline points="120,30 170,26"/>
+        <polyline points="100,80 170,26 180,80"/>
+        <polyline points="108,20 132,20"/>
+        <path d="M170,26 q14,-4 16,8 q2,10 -10,10"/>
+        <circle cx="100" cy="80" r="5" fill="currentColor" stroke="none"/>
+      </svg>
+      <h1>Kilómetro Cero</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#nosotros">Acerca de nosotros</a></li>
+        <li><a href="#galeria-fotos">Nuestro espacio</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#tienda">Pide en línea</a></li>
+        <li><a href="#contacto">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="nosotros" aria-labelledby="nosotros-titulo">
+      <h2 id="nosotros-titulo">Acerca de nosotros</h2>
+      <div class="nosotros-contenido">
+        <p>
+          Nuestra visión es convertirnos en un punto de encuentro para quienes disfrutan
+          del deporte, el ciclismo y la vida activa, creando un espacio donde cada
+          recorrido tenga una pausa especial. Queremos ofrecer una experiencia que
+          combine café de calidad, alimentación, naturaleza y buena energía,
+          convirtiéndonos en ese lugar al que los deportistas quieran llegar, quedarse,
+          compartir y regresar. Más que una cafetería, buscamos construir una comunidad
+          alrededor del movimiento, la pasión por rodar y el disfrute de los pequeños
+          momentos después de cada ruta.
+        </p>
+        <img src="images/hero-cafe-montana.jpg"
+             alt="Café servido en un mug de barro, con vista a las montañas al atardecer"
+             loading="lazy">
+      </div>
+    </section>
+
+    <section id="galeria-fotos" aria-labelledby="galeria-fotos-titulo">
+      <h2 id="galeria-fotos-titulo">Nuestro espacio</h2>
+      <div class="galeria-grid">
+        <img src="images/postres.jpg"
+             alt="Mesa con porciones de cheesecake, un pan de queso glaseado y café servido en tazas">
+        <img src="images/ciclista-ruta.jpg"
+             alt="Ciclista sonriendo sobre la bicicleta en una vía de montaña, después de la lluvia">
+        <img src="images/mug-bike-club.jpg"
+             alt="Mug de 'Mountain Bike Club' con un kit de reparación de bicicleta como regalo">
+      </div>
+    </section>
+
+    <section id="menu" aria-labelledby="menu-titulo">
+      <h2 id="menu-titulo">Nuestro Menú</h2>
+
+      <table>
+        <caption>Bebidas calientes</caption>
+        <thead>
+          <tr>
+            <th scope="col" id="bc-producto">Producto</th>
+            <th scope="col" id="bc-descripcion">Descripción</th>
+            <th scope="col" id="bc-precio">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" id="bc-cafe">Café</th>
+            <td headers="bc-cafe bc-descripcion">Café de origen colombiano, preparado en filtro</td>
+            <td headers="bc-cafe bc-precio">$6.000</td>
+          </tr>
+          <tr>
+            <th scope="row" id="bc-agua">Aguadepanela</th>
+            <td headers="bc-agua bc-descripcion">Bebida tradicional a base de panela, caliente</td>
+            <td headers="bc-agua bc-precio">$5.000</td>
+          </tr>
+          <tr>
+            <th scope="row" id="bc-choco">Chocolate</th>
+            <td headers="bc-choco bc-descripcion">Chocolate caliente con queso</td>
+            <td headers="bc-choco bc-precio">$6.500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Bebidas frías</caption>
+        <thead>
+          <tr>
+            <th scope="col" id="bf-producto">Producto</th>
+            <th scope="col" id="bf-descripcion">Descripción</th>
+            <th scope="col" id="bf-precio">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" id="bf-limonada">Limonada natural</th>
+            <td headers="bf-limonada bf-descripcion">Limonada refrescante con hielo</td>
+            <td headers="bf-limonada bf-precio">$6.000</td>
+          </tr>
+          <tr>
+            <th scope="row" id="bf-frappe">Frappé de café</th>
+            <td headers="bf-frappe bf-descripcion">Café frío batido con hielo</td>
+            <td headers="bf-frappe bf-precio">$8.500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Postres</caption>
+        <thead>
+          <tr>
+            <th scope="col" id="po-producto">Producto</th>
+            <th scope="col" id="po-descripcion">Descripción</th>
+            <th scope="col" id="po-precio">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" id="po-panchoc">Pan de chocolate</th>
+            <td headers="po-panchoc po-descripcion">Pan artesanal relleno de chocolate</td>
+            <td headers="po-panchoc po-precio">$4.500</td>
+          </tr>
+          <tr>
+            <th scope="row" id="po-croisalm">Croissant de almendras</th>
+            <td headers="po-croisalm po-descripcion">Croissant relleno de crema de almendras</td>
+            <td headers="po-croisalm po-precio">$7.000</td>
+          </tr>
+          <tr>
+            <th scope="row" id="po-croischoco">Croissant de chocolate</th>
+            <td headers="po-croischoco po-descripcion">Croissant relleno de chocolate</td>
+            <td headers="po-croischoco po-precio">$6.500</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Snacks</caption>
+        <thead>
+          <tr>
+            <th scope="col" id="sn-producto">Producto</th>
+            <th scope="col" id="sn-descripcion">Descripción</th>
+            <th scope="col" id="sn-precio">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" id="sn-combo1">Combo 1</th>
+            <td headers="sn-combo1 sn-descripcion">Bebida + Panadería</td>
+            <td headers="sn-combo1 sn-precio">$9.000</td>
+          </tr>
+          <tr>
+            <th scope="row" id="sn-combo2">Combo 2</th>
+            <td headers="sn-combo2 sn-descripcion">Bebida caliente + Bebida fría + Huevos</td>
+            <td headers="sn-combo2 sn-precio">$14.000</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section id="tienda" aria-labelledby="tienda-titulo">
+      <h2 id="tienda-titulo">Pide en línea</h2>
+
+      <!--
+        Estos botones son el FILTRO por categoría.
+        El atributo data-categoria es el que leerá script.js
+        para saber qué botón se presionó (no hay nada escrito
+        "a mano" en JavaScript aquí, el HTML solo declara los
+        botones; el comportamiento vive en script.js).
+      -->
+      <div class="filtro-categorias" id="filtro-categorias">
+        <button type="button" class="filtro-btn activo" data-categoria="Todos">Todos</button>
+        <button type="button" class="filtro-btn" data-categoria="Bebidas calientes">Bebidas calientes</button>
+        <button type="button" class="filtro-btn" data-categoria="Bebidas frías">Bebidas frías</button>
+        <button type="button" class="filtro-btn" data-categoria="Postres">Postres</button>
+        <button type="button" class="filtro-btn" data-categoria="Snacks">Snacks</button>
+      </div>
+
+      <!--
+        Este div empieza VACÍO a propósito.
+        script.js va a crear cada tarjeta de producto con
+        JavaScript (createElement) y las va a meter aquí dentro.
+      -->
+      <div class="productos-grid" id="contenedor-productos"></div>
+
+      <!-- Carrito de compras -->
+      <aside class="carrito" id="carrito" aria-labelledby="carrito-titulo">
+        <h3 id="carrito-titulo">Tu pedido</h3>
+
+        <ul class="carrito-lista" id="lista-carrito">
+          <!-- script.js llena esta lista dinámicamente -->
+        </ul>
+
+        <p class="carrito-vacio-mensaje" id="carrito-vacio-mensaje">Aún no has agregado productos.</p>
+
+        <div class="carrito-resumen">
+          <p>Ítems en el carrito: <strong id="carrito-cantidad">0</strong></p>
+          <p>Total a pagar: <strong id="carrito-total">$0</strong></p>
+        </div>
+
+        <button type="button" id="boton-vaciar-carrito">Vaciar carrito</button>
+      </aside>
+    </section>
+
+    <section id="contacto" aria-labelledby="contacto-titulo">
+      <h2 id="contacto-titulo">Contáctanos</h2>
+
+      <form action="#" method="post" id="formulario-contacto" novalidate>
+
+        <fieldset>
+          <legend>Datos de contacto</legend>
+
+          <div>
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+
+          <div>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div>
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="3214422221">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tu consulta</legend>
+
+          <div>
+            <label for="tipo-consulta">Tipo de consulta</label>
+            <select id="tipo-consulta" name="tipo-consulta" required>
+              <option value="">Selecciona una opción</option>
+              <option value="reserva">Reserva de espacio</option>
+              <option value="eventos">Eventos para grupos de ciclismo</option>
+              <option value="menu">Preguntas sobre el menú</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          </div>
+        </fieldset>
+
+        <div>
+          <input type="checkbox" id="politica" name="politica" required>
+          <label for="politica">Acepto la política de privacidad</label>
+        </div>
+
+        <div>
+          <button type="submit">Enviar</button>
+          <button type="reset">Limpiar</button>
+        </div>
+
+      </form>
+
+      <!--
+        Este párrafo empieza oculto (ver la clase "oculto" en el CSS).
+        script.js le quita esa clase y escribe el texto cuando el
+        formulario se envía correctamente.
+      -->
+      <p id="mensaje-confirmacion" class="mensaje-confirmacion oculto" role="status" aria-live="polite"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Kilómetro Cero. Todos los derechos reservados.</p>
+    <address>
+      Ubicación: Calle 80, Puente Rojo<br>
+      Contacto: <a href="tel:+573214422221">321 442 2221</a>
+    </address>
+  </footer>
+
+  <!--
+    Orden importante:
+    1) productos.js define la variable "productos" (los datos)
+    2) script.js la USA para dibujar las tarjetas
+    Si invirtieras el orden, script.js se ejecutaría antes de
+    que "productos" exista y daría un error en la consola.
+  -->
+  <script src="productos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
